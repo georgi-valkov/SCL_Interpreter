@@ -1,0 +1,11 @@
+symbol 11
+function main
+begin
+    set user = 17
+    if user <= 18
+    then
+        display "User is 18 or younger"
+    else
+        display "User is older than 18" 
+    endif
+endfun
