@@ -18,4 +18,8 @@ public class ValueToken<T> extends SyntaxToken
 		this.value = value;
 	}
 	
+	public String getLexeme() {
+		return this.value.toString();
+	}
+	
 }

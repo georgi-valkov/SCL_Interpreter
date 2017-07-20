@@ -18,7 +18,12 @@ public class SyntaxToken
 		this.type = type;
 		this.lineNum = lineNum;
 	}
-
+	public String getLexeme() {
+		return this.type.getLexeme();
+	}
+	public void setLexeme (String lexeme) {
+		this.type.setLexeme(lexeme);
+	}
 	public TokenConst getType()
 	{
 		return type;
@@ -32,13 +37,5 @@ public class SyntaxToken
 	public String toString()
 	{
 		return "Line " + lineNum + ": " + type.toString() + "\n";
-	}
-	
-	public String getDescription() {
-		return this.type.getDesc();
-	}
-	
-	public String getLexeme() {
-		return this.type.getLexeme();
 	}
 }

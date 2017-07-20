@@ -25,17 +25,17 @@ public class Scanner {
     // Table that will store the reserved words and operators
     private final HashMap<String, TokenConst> LookTable = new HashMap<>();
     // Will store the next char
-    char nextChar;
+    private char nextChar;
 
     /* Constructor */
-    public Scanner(String file) throws IOException{
+    public Scanner(InputStream file) throws IOException{
         // If string path does not lead to a file
         // prints out file not found
-        try {
-            charReader = new PushbackReader(new FileReader(file));
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found!");
-        }
+        //try {
+            charReader = new PushbackReader(new InputStreamReader(file));
+        //} catch (FileNotFoundException ex) {
+        //    System.out.println("File not found!");
+        //}
         // Populate Tables with reserved words and operators
         populateTable();
     }

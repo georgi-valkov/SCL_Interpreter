@@ -67,10 +67,14 @@ public enum TokenConst {
     DO("DO",2035,"do"),
     IN("IN",2036,"input"),
     RTRN("RTRN",2037,"return"),
+    MVOID("MVOID",2038,"mvoid"),
+    INTEGER("INTEGER",2039,"integer"),
+    SHORT("SHORT",2040,"short"),
     
     // Value type tokens
     INTLIT("INTLIT",3000,"int_literal"),
     STRLIT("STRLIT",3001,"string_literal"),
+    
     ID("ID",3002,"identifier");
 
     // Data Field
@@ -99,6 +103,10 @@ public enum TokenConst {
 
     public String getLexeme() {
         return lexeme;
+    }
+    
+    public void setLexeme(String lexeme) {
+        this.lexeme = lexeme;
     }
 
     public String toString()
