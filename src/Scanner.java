@@ -31,11 +31,7 @@ public class Scanner {
     public Scanner(InputStream file) throws IOException{
         // If string path does not lead to a file
         // prints out file not found
-        try {
             charReader = new PushbackReader(new InputStreamReader(file));
-            throw new FileNotFoundException();
-        } catch (FileNotFoundException ex) {
-        }
         // Populate Tables with reserved words and operators
         populateTable();
     }
