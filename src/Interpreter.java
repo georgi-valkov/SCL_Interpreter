@@ -10,8 +10,15 @@ import javax.tools.ToolProvider;
 
 
 /**
- * Created by Georgi on 7/19/2017.
+ * Created by Georgi Valkov
+ *            Vojtech Martinek
+ *            Dedric Sundby
+ *            on 7/21/2017.
+ *
+ * Concepts of Programming Lang XLS Group 94 Summer Semester 2017
+ * Professor: Jose Garrido
  */
+
 public class Interpreter {
     // Data fields
     private LinkedList<SyntaxToken> parsedTokenTable = new LinkedList<>();
@@ -23,7 +30,9 @@ public class Interpreter {
         parser.parse();
         parsedTokenTable = parser.getParsedTokenList();
     }
-    
+    // Builds up string with already translated to Java
+    // source code, saves it in file
+    // Compiles the file and executes it
     public void run()  throws IOException{
         String source ="";
         // Building source code string
@@ -40,7 +49,7 @@ public class Interpreter {
         // Saving the source file
         File file = new File("Test.java");
         try {
-            
+            // Creating a buffer that will write to the the file
             BufferedWriter out = new BufferedWriter(new FileWriter(file.getName()));
             out.write(source);
             out.close();
@@ -61,14 +70,15 @@ public class Interpreter {
         
         int maxLines = tokens.getLast().getLineNum();
         SyntaxToken current;
-    
+        
         String body ="";
         current = tokens.pop();
         for (int i = 1; i <= maxLines + 1; i++) {
 
 
             LinkedList<SyntaxToken> list = new LinkedList<>();
-
+            // convert list of tokens to their equivalent
+            // java statements
              do {
                 list.addLast(current);
                 if (!tokens.isEmpty()) {
@@ -115,7 +125,10 @@ public class Interpreter {
             } while ((current.getLineNum() == i) && (!tokens.isEmpty()));
     
         }
+        // Because we have only int variables
+        // replace the beginning of the assignment statement to int
         body = body.replaceAll("set", "int");
+        // Clear else if statement from leftovers
         body = body.replaceAll("else .*if", "else if");
         return body;
         
